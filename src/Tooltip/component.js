@@ -38,7 +38,7 @@ class Tooltip extends Component {
       <div>
         <div
           title={title}
-          ref={(tooltip) => { this.tooltipDOM = tooltip; }}
+          ref={(tooltip) => { if(tooltip) this.tooltipDOM = tooltip.firstChild; }}
         >
           {this.props.children}
         </div>

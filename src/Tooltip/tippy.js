@@ -331,7 +331,14 @@ class Tippy {
         content.setAttribute('class', this.classNames.content)
 
         if (settings.html) {
-            content.innerHTML = document.getElementById(settings.html.replace('#', '')).innerHTML
+             var htmlTemplate = document.getElementById(settings.html.replace('#', ''));
+             if (settings.interactive) {
+                 if (content.firstChild)
+                     content.removeChild(content.firstChild);
+                 content.appendChild(htmlTemplate.firstChild);
+                 htmlTemplate.parentNode.removeChild(htmlTemplate)
+             } else
+                 content.innerHTML = htmlTemplate.innerHTML;
             popper.classList.add('html-template')
             popper.setAttribute('tabindex', '0')
             tooltip.setAttribute('data-template-id', settings.html)
