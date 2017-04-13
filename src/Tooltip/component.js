@@ -24,6 +24,10 @@ class Tooltip extends Component {
       inertia: this.props.inertia,
       popperOptions: this.props.popperOptions,
       html: this.props.id ? `#${this.props.id}` : this.props.id,
+      beforeShown: this.props.beforeShown,
+      shown: this.props.shown,
+      beforeHidden: this.props.beforeHidden,
+      hidden: this.props.hidden
     });
   }
 
